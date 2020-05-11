@@ -6,9 +6,12 @@ add_executable(executable
 
 target_compile_options(executable PUBLIC -Wall -pedantic)
 
+
+
 target_link_libraries(executable
-	PUBLIC coverage_config 
-	)
+	PUBLIC 
+		coverage_config
+		physica)
 
 install(TARGETS executable DESTINATION ${BIN_DIR})
 
@@ -22,7 +25,9 @@ add_library(module_library STATIC
 target_compile_options(module_library PUBLIC -Wall -pedantic)
 
 target_link_libraries(module_library
-	PUBLIC coverage_config 
+	PUBLIC
+		coverage_config 
+		physica
 	)
 
 target_include_directories(module_library  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

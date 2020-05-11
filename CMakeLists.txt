@@ -25,13 +25,13 @@ FetchContent_Declare(libphysica
   GIT_REPOSITORY  https://github.com/temken/libphysica.git
   GIT_TAG         origin/master
   SOURCE_DIR     "${LIBPHYSICA_DIR}"
-  CMAKE_ARGS        "-DCMAKE_BUILD_TYPE=Release"
+  CMAKE_ARGS     "-DCMAKE_BUILD_TYPE=Release -DCODE_COVERAGE=OFF"
   )
 
 FetchContent_GetProperties(libphysica)
 if(NOT libphysica_POPULATED)
     FetchContent_Populate(libphysica)
-    # add_subdirectory( ${libphysica_SOURCE_DIR} )
+    add_subdirectory( ${libphysica_SOURCE_DIR} )
 endif()
 
 # Googletest
@@ -52,7 +52,9 @@ include_directories( ${INCLUDE_DIR} )
 add_subdirectory( ${SRC_DIR} )
 
 # Code Coverage Configuration
-add_library(coverage_config INTERFACE)
+if(NOT TARGET coverage_config)
+  add_library(coverage_config INTERFACE)
+endif()
 
 option(CODE_COVERAGE "Enable coverage reporting" OFF)
 

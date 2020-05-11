@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+
 #include "module.hpp"
 
 TEST(TestFib, ReturnsCorrectFibonacciNumber)
