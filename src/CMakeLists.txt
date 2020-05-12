@@ -32,7 +32,7 @@ target_link_libraries(module_library
 
 target_include_directories(module_library
 	PUBLIC
-	${CMAKE_CURRENT_SOURCE_DIR}
-	${INCLUDE_DIR})
+		${CMAKE_CURRENT_SOURCE_DIR}
+		${INCLUDE_DIR})
 
 install(TARGETS module_library DESTINATION ${LIB_DIR})

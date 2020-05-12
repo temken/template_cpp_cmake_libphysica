@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.com/temken/template_cpp_cmake.svg?branch=master)](https://travis-ci.com/temken/template_cpp_cmake)
-[![codecov](https://codecov.io/gh/temken/template_cpp_cmake/branch/master/graph/badge.svg)](https://codecov.io/gh/temken/template_cpp_cmake)
+[![Build Status](https://travis-ci.com/temken/template_cpp_cmake_libphysica.svg?branch=master)](https://travis-ci.com/temken/template_cpp_cmake_libphysica)
+[![codecov](https://codecov.io/gh/temken/template_cpp_cmake_libphysica/branch/master/graph/badge.svg)](https://codecov.io/gh/temken/template_cpp_cmake_libphysica)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 # template_cpp_cmake_libphysica
