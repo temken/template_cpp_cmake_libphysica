@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-project(template_cpp_cmake)
+project(template_cpp_cmake_libphysica)
 
 # Use C++-11
 set(CMAKE_CXX_STANDARD 11)
@@ -16,11 +16,21 @@ set(SRC_DIR     ${PROJECT_SOURCE_DIR}/src)
 set(TESTS_DIR   ${PROJECT_SOURCE_DIR}/tests)
 set(EXTERNAL_DIR  ${PROJECT_SOURCE_DIR}/external)
 
-include_directories( ${INCLUDE_DIR} )
-
-add_subdirectory( ${SRC_DIR} )
-
+# IMPORT OF EXTERNAL PROJECTS
 include(FetchContent)
+# libphysica
+set(LIBPHYSICA_DIR   ${EXTERNAL_DIR}/libphysica)
+FetchContent_Declare(libphysica
+  GIT_REPOSITORY  https://github.com/temken/libphysica.git
+  GIT_TAG         origin/master
+  SOURCE_DIR     "${LIBPHYSICA_DIR}"
+  CMAKE_ARGS     "-DCMAKE_BUILD_TYPE=Release -DCODE_COVERAGE=OFF" )
+FetchContent_GetProperties(libphysica)
+if(NOT libphysica_POPULATED)
+    FetchContent_Populate(libphysica)
+    add_subdirectory( ${libphysica_SOURCE_DIR} )
+endif()
+
 # Googletest
 set(GTEST_DIR   ${EXTERNAL_DIR}/googletest)
 FetchContent_Declare(googletest
@@ -31,15 +41,18 @@ FetchContent_Declare(googletest
   CONFIGURE_COMMAND ""
   BUILD_COMMAND     ""
   INSTALL_COMMAND   ""
-  TEST_COMMAND      ""
-)
+  TEST_COMMAND      "" )
+
+# Source and include directories
+include_directories( ${INCLUDE_DIR} )
+add_subdirectory( ${SRC_DIR} )
 
 # Code Coverage Configuration
-add_library(coverage_config INTERFACE)
+if(NOT TARGET coverage_config)
+  add_library(coverage_config INTERFACE)
+endif()
 
 option(CODE_COVERAGE "Enable coverage reporting" OFF)
-
-# if(CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 if(CODE_COVERAGE)
   # Add required flags (GCC & LLVM/Clang)
   target_compile_options(coverage_config INTERFACE
@@ -53,15 +66,12 @@ if(CODE_COVERAGE)
     target_link_libraries(coverage_config INTERFACE --coverage)
   endif()
 endif(CODE_COVERAGE)
-# endif(CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-
 
 option (BUILD_TESTING "Build the testing tree." ON)
 # Only build tests if we are the top-level project
 # Allows this to be used by super projects with `add_subdirectory`
 if (BUILD_TESTING AND (PROJECT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR))
   enable_testing()
-
   FetchContent_GetProperties(googletest)
   if(NOT googletest_POPULATED)
     FetchContent_Populate(googletest)
@@ -70,6 +80,5 @@ if (BUILD_TESTING AND (PROJECT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR))
       ${googletest_BINARY_DIR}
       EXCLUDE_FROM_ALL)
   endif()
-
   add_subdirectory(${TESTS_DIR})
 endif()

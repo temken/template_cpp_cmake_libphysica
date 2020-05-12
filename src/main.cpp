@@ -4,6 +4,9 @@
 
 #include "module.hpp"
 
+// Headers from libphysica
+#include "Natural_Units.hpp"
+
 int main()
 {
 	//Starting time
@@ -11,7 +14,8 @@ int main()
 	auto time_start_t = std::chrono::system_clock::to_time_t(time_start);
 	std::cout 	<<"Started at " <<std::ctime(&time_start_t)<<std::endl;
 	
-	std::cout<<fib(10)<<std::endl;
+	std::cout <<fib(10) <<std::endl;
+	std::cout <<In_Units(1.0, meter/sec)<<std::endl;
 
 	//Ending time and computing time
 	auto time_end = std::chrono::system_clock::now();
