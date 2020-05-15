@@ -23,6 +23,8 @@ target_link_libraries(tests
 # )
 #######################
 
+target_include_directories(tests PRIVATE ${GENERATED_DIR} )
+
 target_compile_options(tests PUBLIC -Wall -pedantic)
 
 install(TARGETS tests DESTINATION ${TESTS_DIR})
