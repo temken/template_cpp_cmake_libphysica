@@ -9,12 +9,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Don't use e.g. GNU extension (like -std=gnu++11) for portability
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(BIN_DIR     ${PROJECT_SOURCE_DIR}/bin)
+set(BIN_DIR       ${PROJECT_SOURCE_DIR}/bin)
 set(GENERATED_DIR ${PROJECT_BINARY_DIR}/generated)
-set(INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
-set(LIB_DIR     ${PROJECT_SOURCE_DIR}/lib)
-set(SRC_DIR     ${PROJECT_SOURCE_DIR}/src)
-set(TESTS_DIR   ${PROJECT_SOURCE_DIR}/tests)
+set(INCLUDE_DIR   ${PROJECT_SOURCE_DIR}/include)
+set(LIB_DIR       ${PROJECT_SOURCE_DIR}/lib)
+set(SRC_DIR       ${PROJECT_SOURCE_DIR}/src)
+set(TESTS_DIR     ${PROJECT_SOURCE_DIR}/tests)
 set(EXTERNAL_DIR  ${PROJECT_SOURCE_DIR}/external)
 
 #External projects
