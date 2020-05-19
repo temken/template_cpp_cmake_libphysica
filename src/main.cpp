@@ -9,6 +9,8 @@
 // Headers from libphysica
 #include "Natural_Units.hpp"
 
+using namespace libphysica::natural_units;
+
 int main()
 {
 	//Initial terminal output
