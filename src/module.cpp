@@ -1,7 +1,6 @@
 #include "module.hpp"
 
-// Headers from libphysica
-#include "Numerics.hpp"
+#include "libphysica/Numerics.hpp"
 
 int fib(int n)
 { 

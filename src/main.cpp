@@ -6,8 +6,7 @@
 #include "version.hpp"
 #include "module.hpp"
 
-// Headers from libphysica
-#include "Natural_Units.hpp"
+#include "libphysica/Natural_Units.hpp"
 
 using namespace libphysica::natural_units;
 
