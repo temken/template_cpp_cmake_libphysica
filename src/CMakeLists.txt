@@ -17,8 +17,10 @@
 	install(TARGETS executable DESTINATION ${BIN_DIR})
 
 	# Static library
-	add_library(module_library STATIC
-	    module.cpp)
+	file(GLOB FILES "*.cpp")
+	list(REMOVE_ITEM FILES ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
+	add_library(module_library
+			${FILES})
 
 	set_target_properties(module_library PROPERTIES PREFIX "")
 
@@ -40,10 +42,11 @@
 
 #####################################################################
 # # OPTION B: Build only an executable.
+# Find all source files including main.cpp
+# file(GLOB FILES "*.cpp")
 # 	# Executable
 # 	add_executable(executable
-# 		main.cpp
-# 		module.cpp)
+# 		${FILES})
 
 # 	target_compile_options(executable PUBLIC -Wall -pedantic)
 
