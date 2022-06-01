@@ -1,5 +1,5 @@
 [![Build Status](https://github.com/temken/template_cpp_cmake_libphysica/workflows/Build%20Status/badge.svg)](https://github.com/temken/template_cpp_cmake_libphysica/actions)
-[![codecov](https://codecov.io/gh/temken/template_cpp_cmake_libphysica/branch/master/graph/badge.svg)](https://codecov.io/gh/temken/template_cpp_cmake_libphysica)
+[![codecov](https://codecov.io/gh/temken/template_cpp_cmake_libphysica/branch/main/graph/badge.svg)](https://codecov.io/gh/temken/template_cpp_cmake_libphysica)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 # template_cpp_cmake_libphysica
